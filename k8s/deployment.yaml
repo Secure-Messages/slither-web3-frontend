@@ -19,6 +19,6 @@ spec:
         image: nolabelregistry/mini-app-frontend:latest
         ports:
         - containerPort: 80
-        envFrom:
-        - configMapRef:
-#            name: nodejs-app-config
+#         envFrom:
+#         - configMapRef:
+# #            name: nodejs-app-config
