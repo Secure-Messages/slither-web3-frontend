@@ -8,10 +8,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - app.sm2.fun
+    - mini-app.sm2.fun
     secretName: app-sm2-fun-tls
   rules:
-  - host: app.sm2.fun
+  - host: mini-app.sm2.fun
     http:
       paths:
       - path: /

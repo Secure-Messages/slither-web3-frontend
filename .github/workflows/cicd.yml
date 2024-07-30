@@ -28,8 +28,9 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            nolabelregistry/nolabel-frontend:latest
-            nolabelregistry/nolabel-frontend:${{ github.sha }}
+            nolabelregistry/mini-app-frontend:latest
+            nolabelregistry/mini-app-frontend:${{ github.sha }}
+            
 
   trigger-argocd:
     needs: build-and-push-docker
