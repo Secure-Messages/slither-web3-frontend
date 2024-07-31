@@ -43,10 +43,11 @@ function preload() {
   this.load.html('nameform', 'assets/nameform.html');
 }
 
+var game;
 document.addEventListener('DOMContentLoaded', function () {
-  if (Telegram.WebApp) {
+  if (!game && Telegram.WebApp) {
     Telegram.WebApp.ready();
-    var game = new Phaser.Game(config);
+    game = new Phaser.Game(config);
   }
 });
 
