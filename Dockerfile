@@ -1,21 +1,24 @@
-FROM node:20 as build
+# Use a specific version of Node.js based on Alpine
+FROM node:20-alpine
 
-WORKDIR /app
+# Create app directory inside the container
+WORKDIR /usr/src/app
 
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
+# Copy the rest of your application code
 COPY . .
 
-RUN npm run build
+# If using Nginx as a reverse proxy or static server, assume nginx.conf is configured correctly
+# and Nginx is set up in the host or another container.
+# COPY nginx.conf /etc/nginx/nginx.conf
 
-FROM nginx:stable-alpine
+# Expose the port the app runs on
+EXPOSE 8080
 
-COPY --from=build /app/build /usr/share/nginx/html
-
-COPY nginx.conf /etc/nginx/conf.d/app.conf
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# Command to run your app
+CMD [ "node", "server.js" ]
